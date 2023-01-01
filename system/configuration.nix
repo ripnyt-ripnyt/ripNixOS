@@ -61,15 +61,17 @@
     totem       # video player
     yelp        # help viewer
     evince      # document viewer
-    file-roller # archive manager
     geary       # email client
-    seahorse    # password manager
 
     # these should be self explanatory
     gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
     gnome-font-viewer gnome-logs gnome-maps gnome-music 
     gnome-system-monitor gnome-weather pkgs.gnome-connections
   ];
+  
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
 
   # Configure keymap in X11
   services.xserver = {
@@ -125,6 +127,10 @@
   environment.systemPackages = with pkgs; [
     theme-vertex
     blueman
+    wget
+    git
+    gh
+    gitui
     (vscode-with-extensions.override {
       vscode = vscodium;
       vscodeExtensions = with vscode-extensions; [
@@ -132,7 +138,6 @@
         ms-python.python
       ];
     })
-    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

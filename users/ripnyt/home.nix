@@ -23,7 +23,6 @@
       dunst
   ];
 
-  # Programs
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -45,12 +44,11 @@
         src = ./p10k;
         file = "p10k.zsh";
       }
+    ];
       initExtra = ''
-     eval "$(starship init zsh)"
-     export POWERLEVEL9K_MODE=nerdfont-complete
-     source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-                           ''
-];
+        export POWERLEVEL9K_MODE=nerdfont-complete
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      '';
   };
 
   # Services
