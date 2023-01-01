@@ -145,6 +145,7 @@
       vscodeExtensions = with vscode-extensions; [
         bbenoist.nix
         ms-python.python
+        ms-python.vscode-pylance
       ];
     })
   ];
