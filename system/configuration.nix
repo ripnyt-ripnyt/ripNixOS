@@ -124,23 +124,31 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  # My Python Packages
   environment.systemPackages = with pkgs; [
     blueman
     git
     gh
     gitui
+    mysql
     theme-vertex
     wget
-      (vscode-with-extensions.override {
-        vscode = vscodium;
-        vscodeExtensions = with vscode-extensions; [
-          bbenoist.nix
-          ms-python.python
-        ];
-      })
+    (python310.withPackages(ps: with ps; [
+      numpy
+      requests
+      pandas
+      mysql-connector
+      jupyter
+    ]))
+    (vscode-with-extensions.override {
+      vscode = vscodium;
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        ms-python.python
+      ];
+    })
   ];
-
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
