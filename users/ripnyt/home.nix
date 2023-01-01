@@ -9,18 +9,17 @@
   # Packages
 
   home.packages = with pkgs; [
+      curl
+      discord
+      dunst
+      firefox
+      gparted
+      obsidian
+      signal-desktop
       telegram-cli
       tdesktop
-      signal-desktop
-      gparted
       tmux
-      curl
       teams
-      discord
-      obsidian
-      firefox
-      nerdfonts
-      dunst
   ];
 
   programs.zsh = {
@@ -52,8 +51,10 @@
   };
 
   # Services
-    services.dunst.enable = true;
-
+  services = {
+    dunst.enable = true;
+    gnome-keyring.enable = true;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

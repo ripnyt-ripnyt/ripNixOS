@@ -125,20 +125,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    theme-vertex
     blueman
-    wget
     git
     gh
     gitui
-    (vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with vscode-extensions; [
-        bbenoist.nix
-        ms-python.python
-      ];
-    })
+    theme-vertex
+    wget
+      (vscode-with-extensions.override {
+        vscode = vscodium;
+        vscodeExtensions = with vscode-extensions; [
+          bbenoist.nix
+          ms-python.python
+        ];
+      })
   ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
