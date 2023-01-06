@@ -15,6 +15,15 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Enable NTFS Mounting
+  boot.supportedFilesystems = [ "ntfs" ];
+  # Enable Writing to a specific Drive
+  fileSystems."/home/ripnyt/120ssd" = 
+    {  device = "/dev/sdd1";
+       fsType = "ntfs3";
+       options = [ "rw" "uid=ripnyt"];
+    };
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -49,6 +58,10 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # Enable NVIDIA drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl.enable = true;
 
   # Disable GNOME crap.
   environment.gnome.excludePackages = with pkgs.gnome; [
@@ -133,6 +146,7 @@
     mysql
     theme-vertex
     wget
+    htop
     (python310.withPackages(ps: with ps; [
       numpy
       requests
