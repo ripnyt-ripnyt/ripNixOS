@@ -1,6 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# and in the NixOS manual (accessible by running `nixos-help`).
 
 { config, pkgs, ... }:
 
@@ -18,11 +18,6 @@
   # Enable NTFS Mounting
   boot.supportedFilesystems = [ "ntfs" ];
   # Enable Writing to a specific Drive
-  fileSystems."/home/ripnyt/120ssd" = 
-    {  device = "/dev/sdd1";
-       fsType = "ntfs3";
-       options = [ "rw" "uid=ripnyt"];
-    };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -62,6 +57,7 @@
   # Enable NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
+  # hardware.nvidia.open = true;
 
   # Disable GNOME crap.
   environment.gnome.excludePackages = with pkgs.gnome; [
@@ -75,9 +71,11 @@
     yelp        # help viewer
     evince      # document viewer
     geary       # email client
-
+    
+    # gnome-calculator
+    
     # these should be self explanatory
-    gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
+    gnome-calendar gnome-characters gnome-clocks gnome-contacts
     gnome-font-viewer gnome-logs gnome-maps gnome-music 
     gnome-system-monitor gnome-weather pkgs.gnome-connections
   ];
@@ -123,7 +121,7 @@
   users.users.ripnyt = {
     isNormalUser = true;
     description = "ripnyt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "audio" "networkmanager" "wheel" ];
   };
 
   # Allow unfree packages
@@ -139,20 +137,36 @@
   # $ nix search wget
   # My Python Packages
   environment.systemPackages = with pkgs; [
+    brave
     blueman
+    cachix
+    chrysalis
+    figma-linux
     git
     gh
     gitui
     mysql
+    iotop
+    obs-studio
+    spotify
+#    streamdeck-ui
     theme-vertex
+    vivaldi
+    vivaldi-widevine
     wget
     htop
     (python310.withPackages(ps: with ps; [
+      nltk
+      seaborn
       numpy
       requests
       pandas
       mysql-connector
       jupyter
+      scikit-learn
+      statsmodels
+      sympy
+      matplotlib
     ]))
     (vscode-with-extensions.override {
       vscode = vscodium;
@@ -185,7 +199,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. Its perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
