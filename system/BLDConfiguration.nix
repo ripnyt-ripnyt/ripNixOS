@@ -154,13 +154,15 @@
     iotop
     obs-studio
     spotify
-#    streamdeck-ui
+# needs insecure permissions?    streamdeck-ui
     theme-vertex
     vivaldi
     vivaldi-widevine
     wget
     htop
     (python310.withPackages(ps: with ps; [
+      geopy
+      geopandas
       nltk
       seaborn
       numpy
