@@ -153,6 +153,7 @@
     mysql
     iotop
     obs-studio
+    qgis
     spotify
 # needs insecure permissions?    streamdeck-ui
     theme-vertex

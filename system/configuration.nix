@@ -148,6 +148,7 @@
     mysql
     iotop
     obs-studio
+    qgis
     spotify
 #    streamdeck-ui
     theme-vertex
@@ -156,6 +157,8 @@
     wget
     htop
     (python310.withPackages(ps: with ps; [
+      geopy
+      geopandas
       nltk
       seaborn
       numpy
