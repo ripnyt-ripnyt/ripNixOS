@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+	# Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
@@ -18,6 +18,9 @@
   # Enable NTFS Mounting
   boot.supportedFilesystems = [ "ntfs" ];
   # Enable Writing to a specific Drive
+
+  # enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -148,7 +151,7 @@
     mysql
     iotop
     obs-studio
-    qgis
+#    qgis
     spotify
 #    streamdeck-ui
     theme-vertex
@@ -177,6 +180,11 @@
         bbenoist.nix
         ms-python.python
         ms-python.vscode-pylance
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.vscode-jupyter-slideshow
       ];
     })
   ];
