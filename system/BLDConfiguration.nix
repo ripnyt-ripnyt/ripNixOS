@@ -153,9 +153,9 @@
     mysql
     iotop
     obs-studio
-    qgis
+#    qgis
     spotify
-# needs insecure permissions?    streamdeck-ui
+#    streamdeck-ui
     theme-vertex
     vivaldi
     vivaldi-widevine
@@ -182,6 +182,11 @@
         bbenoist.nix
         ms-python.python
         ms-python.vscode-pylance
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.vscode-jupyter-slideshow
       ];
     })
   ];
